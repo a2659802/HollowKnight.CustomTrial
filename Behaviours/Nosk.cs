@@ -5,6 +5,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Mimic Spider")]
     public class Nosk : MonoBehaviour
     {
         private HealthManager _hm;

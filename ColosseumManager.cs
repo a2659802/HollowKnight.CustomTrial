@@ -106,15 +106,42 @@ namespace CustomTrial
             for (int i = 0; i < CustomTrial.GlobalSettings.Waves.Count; i++)
             {
                 Wave wave = CustomTrial.GlobalSettings.Waves[i];
+                Modding.Logger.LogDebug($"wave idx:{i}");
+                foreach(var n in wave.Enemies.Select(x=>x.Name))
+                {
+                    Modding.Logger.LogDebug($"++++enemy name:{n}");
+                }
                 for (int j = 0; j < wave.Enemies.Count; j++)
                 {
                     Enemy enemy = wave.Enemies[j];
 
                     string enemyName = enemy.Name.ToLower().Replace(" ", "");
-                    GameObject spawnedEnemy = SpawnEnemy(enemyName, enemy.SpawnPosition);
+                    if( !CustomTrial.GameObjects.TryGetValue(enemyName, out _) )
+                    {
+                        Modding.Logger.LogWarn($"(SpawnEnemy): unexpect null object of name:{enemyName}");
+                        continue;
+                    }
+                    GameObject spawnedEnemy;
+                    try
+                    {
+                        Modding.Logger.LogDebug($"Try spawn name:{enemyName},wave_idx:{i},enemy_idx:{j}");
+                        spawnedEnemy = SpawnEnemy(enemyName, enemy.SpawnPosition);
+                    }
+                    catch
+                    {
+                        Modding.Logger.LogError($"(SpawnEnemy): unexpect error of name:{enemyName},obj:{CustomTrial.GameObjects[enemyName]}");
+                        continue;
+                    }
                     if (enemy.Health > 0)
                     {
-                        spawnedEnemy.GetComponent<HealthManager>().hp = enemy.Health;
+                        var _hm = spawnedEnemy?.GetComponent<HealthManager>();
+                        if (_hm == null)
+                        {
+                            Modding.Logger.LogError($"Enemyname:{enemyName} seems not an enemy, auto remove");
+                            wave.Enemies.Remove(enemy);
+                            continue;
+                        }
+                        _hm.hp = enemy.Health;
                     }
                     _queuedEnemies.Add($"{i}:{enemyName}:{j}", spawnedEnemy);
                 }
@@ -247,7 +274,12 @@ namespace CustomTrial
 
                     string enemyName = enemy.Name.ToLower().Replace(" ", "");
                     spawn.GetState("Spawn").RemoveAction<ActivateGameObject>();
-                    spawn.GetState("Spawn").InsertMethod(1, () => _queuedEnemies[$"{waveNum}:{enemyName}:{enemyNum}"].SetActive(true));
+                    spawn.GetState("Spawn").InsertMethod(1, () => { 
+                        if(_queuedEnemies.TryGetValue($"{waveNum}:{enemyName}:{enemyNum}",out var _go))
+                        {
+                            _go.SetActive(true);
+                        }
+                        });
                     spawn.SetState("Init");
                     spawn.SendEvent("SPAWN");
 
@@ -310,10 +342,15 @@ namespace CustomTrial
         {
             GameObject enemy = Instantiate(CustomTrial.GameObjects[enemyName], spawnPoint, Quaternion.identity);
             enemy.SetActive(false);
+            var hm = enemy.GetComponent<HealthManager>();
+            if (hm == null)
+            {
+                Destroy(enemy);
+                return null;
+            }
 
             enemy.AddComponent<EnemyTracker>();
 
-            var hm = enemy.GetComponent<HealthManager>();
             hm.SetGeoSmall(0);
             hm.SetGeoMedium(0);
             hm.SetGeoLarge(0);

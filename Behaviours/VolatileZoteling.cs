@@ -5,6 +5,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Zote Balloon")]
     class VolatileZoteling : MonoBehaviour
     {
         private PlayMakerFSM _control;

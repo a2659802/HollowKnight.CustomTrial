@@ -4,6 +4,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Ghost Warrior Slug")]
     public class Gorb : MonoBehaviour
     {
         private PlayMakerFSM _movement;

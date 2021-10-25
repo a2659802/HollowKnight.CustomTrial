@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Zombie Beam Miner Rematch")]
     public class EnragedGuardian : MonoBehaviour
     {
         private PlayMakerFSM _miner;

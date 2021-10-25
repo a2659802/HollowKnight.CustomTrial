@@ -6,6 +6,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Zote Thwomp")]
     class ZoteThwomp : MonoBehaviour
     {
         private PlayMakerFSM _control;

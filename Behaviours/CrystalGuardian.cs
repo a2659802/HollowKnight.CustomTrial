@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Mega Zombie Beam Miner")]
     public class CrystalGuardian : MonoBehaviour
     {
         private PlayMakerFSM _miner;

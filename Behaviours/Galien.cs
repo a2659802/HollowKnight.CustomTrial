@@ -2,6 +2,7 @@
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Ghost Warrior Galien")]
     public class Galien : MonoBehaviour
     {
         private PlayMakerFSM _movement;

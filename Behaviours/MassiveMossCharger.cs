@@ -5,6 +5,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Mega Moss Charger")]
     public class MassiveMossCharger : MonoBehaviour
     {
         private PlayMakerFSM _control;

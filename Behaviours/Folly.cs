@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Mage Balloon")]
     public class Folly : MonoBehaviour
     {
         private PlayMakerFSM _control;

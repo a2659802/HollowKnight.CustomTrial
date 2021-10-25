@@ -2,6 +2,7 @@
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Ghost Warrior Markoth")]
     public class Markoth : MonoBehaviour
     {
         private PlayMakerFSM _movement;

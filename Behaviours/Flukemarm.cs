@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Fluke Mother")]
     public class Flukemarm : MonoBehaviour
     {
         private PlayMakerFSM _mother;

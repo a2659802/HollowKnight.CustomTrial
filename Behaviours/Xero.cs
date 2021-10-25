@@ -4,6 +4,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Ghost Warrior Xero")]
     public class Xero : MonoBehaviour
     {
         private PlayMakerFSM _movement;

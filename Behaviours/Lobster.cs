@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Lobster")]
     public class Lobster : MonoBehaviour
     {
         private PlayMakerFSM _control;

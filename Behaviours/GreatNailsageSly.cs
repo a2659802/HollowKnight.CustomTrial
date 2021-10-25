@@ -5,6 +5,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Sly Boss")]
     public class GreatNailsageSly : MonoBehaviour
     {
         private PlayMakerFSM _control;

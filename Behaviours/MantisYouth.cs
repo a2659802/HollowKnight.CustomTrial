@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Mantis Flyer Child")]
     public class MantisYouth : MonoBehaviour
     {
         private PlayMakerFSM _flyer;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Mage Knight")]
     public class SoulWarrior : MonoBehaviour
     {
         private PlayMakerFSM _knight;

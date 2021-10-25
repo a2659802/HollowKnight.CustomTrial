@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Parasite Balloon")]
     public class InfectedBalloon : MonoBehaviour
     {
         private PlayMakerFSM _control;

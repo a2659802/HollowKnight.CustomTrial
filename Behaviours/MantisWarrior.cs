@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Mantis")]
     public class MantisWarrior : MonoBehaviour
     {
         private PlayMakerFSM _mantis;

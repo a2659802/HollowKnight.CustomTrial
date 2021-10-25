@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("False Knight Dream")]
     public class FailedChampion : MonoBehaviour
     {
         private PlayMakerFSM _control;

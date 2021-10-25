@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Sheo Boss")]
     public class PaintmasterSheo : MonoBehaviour
     {
         private PlayMakerFSM _sheo;

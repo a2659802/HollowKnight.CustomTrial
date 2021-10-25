@@ -4,6 +4,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Shade Sibling")]
     class Sibling : MonoBehaviour
     {
         private PlayMakerFSM _control;

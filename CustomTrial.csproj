@@ -12,7 +12,7 @@
     <OutputPath>bin\$(Configuration)\</OutputPath>
     <LangVersion>latest</LangVersion>
     <!-- Change this to the path of your modded HK installation -->
-    <HollowKnightRefs>C:/Program Files (x86)/Steam/steamapps/common/Hollow Knight/hollow_knight_Data/Managed/</HollowKnightRefs>
+    <HollowKnightRefs>H:\SteamLibrary\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\</HollowKnightRefs>
     <!-- Change this to the path where you want the ready-to-upload exports to be -->
     <ExportDir>$(HollowKnightRefs)Mods/$(TargetName)/Export/</ExportDir>
   </PropertyGroup>
@@ -31,7 +31,7 @@
       <Output TaskParameter="Items" ItemName="FilesWithHashes" />
     </GetFileHash>
     <WriteLinesToFile File="$(ExportDir)/$(TargetName)/SHA.txt" Lines="@(FilesWithHashes->'%(FileHash)')" Overwrite="true" Encoding="UTF-8" />
-      <Exec Command="steam steam://rungameid/367520" />
+      
   </Target>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <!-- Uncomment this to enabled strong name key signing for releases -->
@@ -310,7 +310,7 @@
       <HintPath>$(HollowKnightRefs)/UnityEngine.XRModule.dll</HintPath>
     </Reference>
     <Reference Include="Vasi">
-      <HintPath>..\..\..\..\..\Program Files (x86)\Steam\steamapps\common\Hollow Knight\hollow_knight_Data\Managed\Mods\Vasi\Vasi.dll</HintPath>
+      <HintPath>..\dll_15\Vasi.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>

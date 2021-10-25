@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Dung Defender")]
     public class DungDefender : MonoBehaviour
     {
         private PlayMakerFSM _dd;

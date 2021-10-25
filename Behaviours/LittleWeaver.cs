@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Spider Flyer")]
     public class LittleWeaver : MonoBehaviour
     {
         private PlayMakerFSM _control;

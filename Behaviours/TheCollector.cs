@@ -5,6 +5,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Jar Collector")]
     public class TheCollector : MonoBehaviour
     {
         private PlayMakerFSM _control;

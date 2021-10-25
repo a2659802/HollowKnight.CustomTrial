@@ -5,6 +5,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Hornet Nosk")]
     public class WingedNosk : MonoBehaviour
     {
         private PlayMakerFSM _nosk;

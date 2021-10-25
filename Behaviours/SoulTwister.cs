@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Mage")]
     public class SoulTwister : MonoBehaviour
     {
         private PlayMakerFSM _mage;

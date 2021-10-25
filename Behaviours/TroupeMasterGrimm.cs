@@ -6,6 +6,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Grimm Boss")]
     public class TroupeMasterGrimm : MonoBehaviour
     {
         private PlayMakerFSM _constrainX;
@@ -14,6 +15,9 @@ namespace CustomTrial.Behaviours
 
         private void Awake()
         {
+            GameObject spikeHolder = Instantiate(CustomTrial.GameObjects["grimmspikeholder"], new Vector2(ArenaInfo.CenterX, ArenaInfo.BottomY - 3), Quaternion.identity);
+            spikeHolder.SetActive(true);
+
             _constrainX = gameObject.LocateMyFSM("constrain_x");
             _constrainY = gameObject.LocateMyFSM("Constrain Y");
             _control = gameObject.LocateMyFSM("Control");

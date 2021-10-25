@@ -6,6 +6,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Zote Crew Fat")]
     class FatZote : MonoBehaviour
     {
         private PlayMakerFSM _control;

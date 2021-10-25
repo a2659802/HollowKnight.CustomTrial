@@ -4,6 +4,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Ghost Warrior Hu")]
     public class ElderHu : MonoBehaviour
     {
         private PlayMakerFSM _movement;

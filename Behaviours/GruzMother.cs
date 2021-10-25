@@ -5,6 +5,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Giant Fly")]
     public class GruzMother : MonoBehaviour
     {
         private PlayMakerFSM _control;

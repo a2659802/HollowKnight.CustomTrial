@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Mega Jellyfish GG")]
     public class Uumuu : MonoBehaviour
     {
         private PlayMakerFSM _bounds;
@@ -13,6 +14,12 @@ namespace CustomTrial.Behaviours
         {
             _bounds = gameObject.LocateMyFSM("Bounds");
             _jellyfish = gameObject.LocateMyFSM("Mega Jellyfish");
+
+            GameObject jellyfishSpawner = Instantiate(CustomTrial.GameObjects["jellyfishspawner"], new Vector2(ArenaInfo.CenterX, ArenaInfo.CenterY), Quaternion.identity);
+            jellyfishSpawner.SetActive(true);
+            jellyfishSpawner.AddComponent<JellyfishSpawner>();
+            GameObject multizaps = Instantiate(CustomTrial.GameObjects["megajellyfishmultizaps"], new Vector2(ArenaInfo.CenterX, ArenaInfo.CenterY), Quaternion.identity);
+            multizaps.SetActive(true);
         }
 
         private IEnumerator Start()

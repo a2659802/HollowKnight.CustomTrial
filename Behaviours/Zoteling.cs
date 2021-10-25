@@ -5,6 +5,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Zoteling")]
     class Zoteling : MonoBehaviour
     {
         private PlayMakerFSM _control;

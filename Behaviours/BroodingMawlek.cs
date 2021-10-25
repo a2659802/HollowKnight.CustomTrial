@@ -4,6 +4,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Mawlek Body")]
     public class BroodingMawlek : MonoBehaviour
     {
         private PlayMakerFSM _control;

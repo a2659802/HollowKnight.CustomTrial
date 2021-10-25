@@ -6,6 +6,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Hollow Knight Boss")]
     public class TheHollowKnight : MonoBehaviour
     {
         private PlayMakerFSM _control;

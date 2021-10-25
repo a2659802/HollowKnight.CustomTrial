@@ -9,6 +9,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Giant Buzzer Col")]
     class VengeflyKing : MonoBehaviour
     {
         private PlayMakerFSM _buzzer;

@@ -5,6 +5,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Lost Kin")]
     public class LostKin : MonoBehaviour
     {
         private PlayMakerFSM _control;

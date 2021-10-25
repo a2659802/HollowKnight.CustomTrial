@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Lancer")]
     public class Lancer : MonoBehaviour
     {
         private PlayMakerFSM _control;

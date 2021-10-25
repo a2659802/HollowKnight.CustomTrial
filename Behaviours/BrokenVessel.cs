@@ -5,6 +5,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Infected Knight")]
     public class BrokenVessel : MonoBehaviour
     {
         private PlayMakerFSM _control;

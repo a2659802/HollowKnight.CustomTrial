@@ -6,6 +6,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Zote Fluke")]
     class ZoteFluke : MonoBehaviour
     {
         private PlayMakerFSM _control;

@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Black Knight")]
     public class WatcherKnight : MonoBehaviour
     {
         private PlayMakerFSM _knight;

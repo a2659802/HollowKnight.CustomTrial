@@ -5,6 +5,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Absolute Radiance")]
     class AbsoluteRadiance : MonoBehaviour
     {
         private PlayMakerFSM _commands;

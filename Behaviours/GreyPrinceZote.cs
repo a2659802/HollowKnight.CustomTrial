@@ -5,6 +5,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Grey Prince")]
     public class GreyPrinceZote : MonoBehaviour
     {
         private PlayMakerFSM _constrainX;

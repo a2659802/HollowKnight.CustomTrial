@@ -6,6 +6,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Mantis Traitor Lord")]
     public class TraitorLord : MonoBehaviour
     {
         private const float GroundY = 6.0f;

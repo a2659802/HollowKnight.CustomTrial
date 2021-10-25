@@ -2,6 +2,7 @@
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Ghost Warrior No Eyes")]
     public class NoEyes : MonoBehaviour
     {
         private PlayMakerFSM _movement;

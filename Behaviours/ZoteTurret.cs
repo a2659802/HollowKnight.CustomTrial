@@ -5,6 +5,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Zote Turret")]
     class ZoteTurret : MonoBehaviour
     {
         private PlayMakerFSM _control;

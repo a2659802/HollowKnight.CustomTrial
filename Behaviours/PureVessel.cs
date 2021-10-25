@@ -6,6 +6,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("HK Prime")]
     public class PureVessel : MonoBehaviour
     {
         private const float GroundY = 6.4f;

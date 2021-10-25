@@ -22,8 +22,21 @@ namespace CustomTrial
         public static GlobalSettings GlobalSettings => _globalSettings;
 
         public override string GetVersion() => "0.0.0.1";
+        public static List<string> EnimiesNameList
+        {
+            get
+            {
+                var normal = _preloadDictionary.Select(x => x.Key);
+                var colo = _colosseumEnemies;
+                var list = new List<string>();
+                list.AddRange(colo);
+                list.AddRange(normal);
 
-        private Dictionary<string, (string, string)> _preloadDictionary = new()
+                return list;
+            }
+        }
+
+        private static readonly Dictionary<string, (string, string)> _preloadDictionary = new()
         {
             ["shadowcreeper"] = ("Abyss_20", "Abyss Crawler"),
             ["infectedballoon"] = ("Abyss_20", "Parasite Balloon (6)"),
@@ -112,8 +125,10 @@ namespace CustomTrial
             ["flukefey"] = ("Waterways_02", "Fluke Fly"),
             ["flukemon"] = ("Waterways_04b", "Flukeman"),
             ["hwurmp"] = ("Waterways_04b", "Inflater"),
-            ["wingmould"] = ("White_Palace_01", "White Palace Fly"),
-            ["royalretainer"] = ("White_Palace_03_hub", "Enemy"),
+            // this enemy has infinate HP, we can't kill it 
+            //["wingmould"] = ("White_Palace_01", "White Palace Fly"), 
+            //[WARN]:[API] - Could not find object "Enemy" in scene "White_Palace_03_hub", requested by mod `Custom Trial`
+            //["royalretainer"] = ("White_Palace_03_hub", "Enemy"),
             ["kingsmould"] = ("White_Palace_11", "Royal Gaurd"),
             ["volatilezoteling"] = ("GG_Mighty_Zote", "Battle Control/Zote Balloon Ordeal"),
             ["zoteling"] = ("GG_Mighty_Zote", "Battle Control/Zotelings/Ordeal Zoteling"),
@@ -128,11 +143,11 @@ namespace CustomTrial
             ["brokenvessel"] = ("GG_Broken_Vessel", "Infected Knight"),
             ["broodingmawlek"] = ("GG_Brooding_Mawlek", "Battle Scene/Mawlek Body"),
             ["thecollector"] = ("GG_Collector_V", "Battle Scene/Jar Collector"),
-            ["crystalguardian"] = ("GG_Crystal_Guardian", "Mega Zombie Beam Miner (1)"),
+            //["crystalguardian"] = ("GG_Crystal_Guardian", "Mega Zombie Beam Miner (1)"),
             ["enragedguardian"] = ("GG_Crystal_Guardian_2", "Battle Scene/Zombie Beam Miner Rematch"),
             ["dungdefender"] = ("GG_Dung_Defender", "Dung Defender"),
-            ["failedchampion"] = ("GG_Failed_Champion", "False Knight Dream"),
-            ["falseknight"] = ("GG_False_Knight", "Battle Scene/False Knight New"),
+            //["failedchampion"] = ("GG_Failed_Champion", "False Knight Dream"),
+            //["falseknight"] = ("GG_False_Knight", "Battle Scene/False Knight New"),
             ["flukemarm"] = ("GG_Flukemarm", "Fluke Mother"),
             ["galien"] = ("GG_Ghost_Galien", "Warrior/Ghost Warrior Galien"),
             ["gorb"] = ("Cliffs_02_boss", "Warrior/Ghost Warrior Slug"),
@@ -142,7 +157,8 @@ namespace CustomTrial
             ["noeyes"] = ("GG_Ghost_No_Eyes", "Warrior/Ghost Warrior No Eyes"),
             ["xero"] = ("GG_Ghost_Xero", "Warrior/Ghost Warrior Xero"),
             ["greyprincezote"] = ("GG_Grey_Prince_Zote", "Grey Prince"),
-            ["troupemastergrimm"] = ("GG_Grimm", "Grimm Scene/Grimm Boss"),
+            //dead not continue
+            //["troupemastergrimm"] = ("GG_Grimm", "Grimm Scene/Grimm Boss"),
             ["grimmspikeholder"] = ("GG_Grimm", "Grimm Spike Holder"),
             ["nightmarekinggrimm"] = ("GG_Grimm_Nightmare", "Grimm Control/Nightmare Grimm Boss"),
             ["nightmaregrimmspikeholder"] = ("GG_Grimm_Nightmare", "Grimm Spike Holder"),
@@ -150,7 +166,7 @@ namespace CustomTrial
             ["hiveknight"] = ("GG_Hive_Knight", "Battle Scene/Hive Knight"),
             ["purevessel"] = ("GG_Hollow_Knight", "Battle Scene/HK Prime"),
             ["hornetprotector"] = ("GG_Hornet_1", "Boss Holder/Hornet Boss 1"),
-            ["needle"] = ("GG_Hornet_1", "Boss Holder/Needle"),
+            //["needle"] = ("GG_Hornet_1", "Boss Holder/Needle"),
             ["hornetsentinel"] = ("GG_Hornet_2", "Boss Holder/Hornet Boss 2"),
             ["lostkin"] = ("GG_Lost_Kin", "Lost Kin"),
             ["palelurker"] = ("GG_Lurker", "Lurker Control/Pale Lurker"),
@@ -183,7 +199,7 @@ namespace CustomTrial
             ["grimmkinnightmare"] = ("Hive_03", "Flamebearer Spawn"),
         };
 
-        private List<string> _colosseumEnemies = new()
+        private static readonly List<string> _colosseumEnemies = new()
         {
             "armoredsquit",
             "battleobble",
@@ -191,7 +207,7 @@ namespace CustomTrial
             "deathloodle",
             "furiousvengefly",
             "heavyfool",
-            "lancer",
+            //"lancer",
             "lessermawlek",
             "lobster",
             "mantispetra",
@@ -201,7 +217,7 @@ namespace CustomTrial
             "sturdyfool",
             "shieldedfool",
             "soultwister",
-            "volttwister",
+            //"volttwister",
             "wingedfool",
         };
 
@@ -215,6 +231,7 @@ namespace CustomTrial
                     {
                         new Enemy("Primal Aspid", 50, new Vector2(90, 10)),
                         new Enemy("Great Hopper", 100, new Vector2(110, 10)),
+                        new Enemy("heavyfool", 100, new Vector2(100, 10))
                     },
                     new List<Vector2> { new Vector2(100, 10) },
                     "Cheer",
@@ -232,6 +249,8 @@ namespace CustomTrial
                         new Enemy("Flukemunga", 200, new Vector2(94, 8)),
                         new Enemy("Obble", 350, new Vector2(95, 10)),
                         new Enemy("Ooma", 1, new Vector2(110, 12)),
+                        new Enemy("sturdyfool", 1, new Vector2(100, 20)),
+                        new Enemy("uumuu", 1, new Vector2(100, 20)),
                     },
                     new List<Vector2> { new Vector2(100, 10) },
                     "Laugh",
@@ -248,16 +267,23 @@ namespace CustomTrial
                 _globalSettings.AddWave(exampleWave1);
                 _globalSettings.AddWave(exampleWave2);
             }
+            /*if(_globalSettings.EnableRandom)
+            {
+                _globalSettings = Utils.GenRandom.RandomPlay();
+            }*/
+            _globalSettings = Utils.GenRandom.AllPlay();
 
             List<(string, string)> preloads = new();
             foreach (Wave wave in _globalSettings.Waves)
             {
+                List<Enemy> invalid = new();
                 foreach (Enemy enemy in wave.Enemies)
                 {
                     string enemyName = enemy.Name.ToLower().Replace(" ", "");
                     if (!_colosseumEnemies.Contains(enemyName) && !_preloadDictionary.ContainsKey(enemyName))
                     {
                         Log($"Enemy {enemyName} does not exist in the preloads dictionary.");
+                        invalid.Add(enemy);
                         continue;
                     }
                     if (!_colosseumEnemies.Contains(enemyName) && !preloads.Contains(_preloadDictionary[enemyName]))
@@ -292,6 +318,11 @@ namespace CustomTrial
                         preloads.Add(_preloadDictionary["nightmaregrimmspikeholder"]);
                         GameObjects.Add("nightmaregrimmspikeholder", null);
                     }
+                }
+            
+                for(int idx=0;idx<invalid.Count;idx++) //remove the invalid item, otherwise will cause null reference exception when spawn waves
+                {
+                    wave.Enemies.Remove(invalid[idx]);
                 }
             }
 
@@ -355,6 +386,7 @@ namespace CustomTrial
             }
             else if (nextScene.name == "Room_Colosseum_Gold")
             {
+                _globalSettings = Utils.GenRandom.RandomPlay();
                 Crowds.Clear();
                 foreach (GameObject crowd in UObject.FindObjectsOfType<GameObject>()
                     .Where(go => go.name.Contains("Colosseum Crowd NPC")))

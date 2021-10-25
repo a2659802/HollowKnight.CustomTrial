@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Mage Blob")]
     public class Mistake : MonoBehaviour
     {
         private PlayMakerFSM _blob;

@@ -4,6 +4,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Hornet Boss 1")]
     public class HornetProtector : MonoBehaviour
     {
         private PlayMakerFSM _control;

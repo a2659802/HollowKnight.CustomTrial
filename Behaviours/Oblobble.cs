@@ -5,6 +5,7 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Mega Fat Bee")]
     public class Oblobble : MonoBehaviour
     {
         private PlayMakerFSM _attack;

@@ -4,6 +4,7 @@ using UnityEngine;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Baby Centipede")]
     public class Dirtcarver : MonoBehaviour
     {
         private PlayMakerFSM _centipede;
@@ -23,9 +24,9 @@ namespace CustomTrial.Behaviours
             GetComponent<MeshRenderer>().enabled = true;
         }
 
-        private void Update()
+        /*private void Update()
         {
             Modding.Logger.Log("Centipede: " + _centipede.ActiveStateName);
-        }
+        }*/
     }
 }

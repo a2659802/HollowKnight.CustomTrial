@@ -2,6 +2,7 @@
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Ghost Warrior Marmu")]
     public class Marmu : MonoBehaviour
     {
         private PlayMakerFSM _control;

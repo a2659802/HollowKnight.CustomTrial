@@ -4,6 +4,8 @@ using Vasi;
 
 namespace CustomTrial.Behaviours
 {
+    [MatchNameAttribue("Oro")]
+    [MatchNameAttribue("Mato")]
     public class Nailmaster : MonoBehaviour
     {
         private PlayMakerFSM _nailmaster;
