@@ -12,11 +12,13 @@ namespace CustomTrial.Behaviours
         private PlayMakerFSM _constrainX;
         private PlayMakerFSM _constrainY;
         private PlayMakerFSM _control;
+        private GameObject spikeHolder;
         
         private void Awake()
         {
-            GameObject spikeHolder = Instantiate(CustomTrial.GameObjects["nightmaregrimmspikeholder"], new Vector2(ArenaInfo.CenterX, ArenaInfo.BottomY - 3), Quaternion.identity);
-            spikeHolder.SetActive(true);
+            GameObject _spikeHolder = Instantiate(CustomTrial.GameObjects["nightmaregrimmspikeholder"], new Vector2(ArenaInfo.CenterX, ArenaInfo.BottomY - 3), Quaternion.identity);
+            _spikeHolder.SetActive(true);
+            this.spikeHolder = _spikeHolder;
 
             _constrainX = gameObject.LocateMyFSM("constrain_x");
             _constrainY = gameObject.LocateMyFSM("Constrain Y");
@@ -46,8 +48,9 @@ namespace CustomTrial.Behaviours
 
             _control.GetState("Death Start").InsertMethod(0, () =>
             {
-                Destroy(FindObjectsOfType<GameObject>().First(go => go.name.Contains("Grimm Spike Holder")));
-                ColosseumManager.EnemyCount--;
+                Destroy(spikeHolder);
+                //Destroy(FindObjectsOfType<GameObject>().First(go => go.name.Contains("Grimm Spike Holder")));
+                //ColosseumManager.EnemyCount--;
             });
 
             _control.SendEvent("TELE OUT");

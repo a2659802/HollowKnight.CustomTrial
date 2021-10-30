@@ -23,7 +23,7 @@ namespace CustomTrial.Behaviours
             _control.Fsm.GetFsmInt("Grimmchild Level").Value = grimmchildLevel;
 
             _control.GetState("Follow").InsertMethod(8, () => _offset = HeroController.instance.transform.position - transform.position);
-            _control.GetState("Death Start").InsertMethod(0, () => ColosseumManager.EnemyCount--);
+            //_control.GetState("Death Start").InsertMethod(0, () => ColosseumManager.EnemyCount--);
             
             _control.GetState("Explode").RemoveAction<ApplyMusicCue>();
             _control.GetState("Music").RemoveAction<ApplyMusicCue>();

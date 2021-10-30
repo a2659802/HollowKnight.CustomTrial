@@ -17,7 +17,7 @@ namespace CustomTrial.Behaviours
         private IEnumerator Start()
         {
 
-            _control.GetState("Destroy").InsertMethod(0, () => ColosseumManager.EnemyCount--);
+            //_control.GetState("Destroy").InsertMethod(0, () => ColosseumManager.EnemyCount--);
 
             _control.SetState("Pause");
 

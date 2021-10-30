@@ -37,6 +37,10 @@ namespace CustomTrial.Utils
             int idx = UnityEngine.Random.Range(0, cnt );
 
             name = CustomTrial.EnimiesNameList[idx];
+            if(name.Contains("zote") || name.Contains("Zote"))
+            {
+                return RandomEnemy();
+            }
 
             return new Enemy(name, health, pos);
         }
@@ -73,13 +77,15 @@ namespace CustomTrial.Utils
             float wallc = RandomWallC();
             float walll = RandomWallL();
             float wallr = RandomWallR();
-            bool spike = Random.Range(0, 2) == 1 ? true : false;
+            bool spike = Random.Range(0, 5) == 1 ? true : false;
 
             for(int i=0;i<enemies_cnt;i++)
             {
                 enemies.Add(RandomEnemy());
             }
-            for(int i=0;i<platform_cnt;i++)
+            if (spike)
+                platform_cnt++;
+            for (int i=0;i<platform_cnt;i++)
             {
                 plats.Add(RandomPlatform());
             }

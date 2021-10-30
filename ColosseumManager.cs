@@ -283,11 +283,13 @@ namespace CustomTrial
                     spawn.SetState("Init");
                     spawn.SendEvent("SPAWN");
 
-                    EnemyCount++;
+                    //increase in EnemyTracker OnEnable instead
+                    //EnemyCount++;
 
                     yield return new WaitForSeconds(wave.DelayBetweenSpawns);
                 }
 
+                yield return new WaitForSeconds(0.5f);
                 yield return new WaitWhile(() => EnemyCount > 0);
 
                 switch (wave.CrowdAction)

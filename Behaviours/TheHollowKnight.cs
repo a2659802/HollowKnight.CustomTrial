@@ -59,7 +59,7 @@ namespace CustomTrial.Behaviours
             corpse.LocateMyFSM("Corpse").GetState("Blow").InsertMethod(9, () =>
             {
                 GameCameras.instance.StopCameraShake();
-                ColosseumManager.EnemyCount--;
+                //ColosseumManager.EnemyCount--;
                 Destroy(corpse);
                 Destroy(gameObject);
             });

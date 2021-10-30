@@ -130,13 +130,13 @@ namespace CustomTrial
             //[WARN]:[API] - Could not find object "Enemy" in scene "White_Palace_03_hub", requested by mod `Custom Trial`
             //["royalretainer"] = ("White_Palace_03_hub", "Enemy"),
             ["kingsmould"] = ("White_Palace_11", "Royal Gaurd"),
-            ["volatilezoteling"] = ("GG_Mighty_Zote", "Battle Control/Zote Balloon Ordeal"),
+            //["volatilezoteling"] = ("GG_Mighty_Zote", "Battle Control/Zote Balloon Ordeal"),
             ["zoteling"] = ("GG_Mighty_Zote", "Battle Control/Zotelings/Ordeal Zoteling"),
             ["fatzote"] = ("GG_Mighty_Zote", "Battle Control/Fat Zotes/Zote Crew Fat (1)"),
             ["tallzote"] = ("GG_Mighty_Zote", "Battle Control/Tall Zotes/Zote Crew Tall"),
             ["zotesalubra"] = ("GG_Mighty_Zote", "Battle Control/Zote Salubra"),
             ["zotethemighty"] = ("GG_Mighty_Zote", "Battle Control/Dormant Warriors/Zote Crew Normal (1)"),
-            ["zoteturret"] = ("GG_Mighty_Zote", "Battle Control/Extra Zotes/Zote Turret"),
+            //["zoteturret"] = ("GG_Mighty_Zote", "Battle Control/Extra Zotes/Zote Turret"),
             ["zotefluke"] = ("GG_Mighty_Zote", "Battle Control/Zote Fluke"),
             ["zotethwomp"] = ("GG_Mighty_Zote", "Battle Control/Zote Thwomp"),
 
@@ -150,7 +150,7 @@ namespace CustomTrial
             //["falseknight"] = ("GG_False_Knight", "Battle Scene/False Knight New"),
             ["flukemarm"] = ("GG_Flukemarm", "Fluke Mother"),
             ["galien"] = ("GG_Ghost_Galien", "Warrior/Ghost Warrior Galien"),
-            ["gorb"] = ("Cliffs_02_boss", "Warrior/Ghost Warrior Slug"),
+            //["gorb"] = ("Cliffs_02_boss", "Warrior/Ghost Warrior Slug"),
             ["elderhu"] = ("GG_Ghost_Hu", "Warrior/Ghost Warrior Hu"),
             ["markoth"] = ("GG_Ghost_Markoth", "Warrior/Ghost Warrior Markoth"),
             ["marmu"] = ("GG_Ghost_Marmu", "Warrior/Ghost Warrior Marmu"),
@@ -169,12 +169,12 @@ namespace CustomTrial
             //["needle"] = ("GG_Hornet_1", "Boss Holder/Needle"),
             ["hornetsentinel"] = ("GG_Hornet_2", "Boss Holder/Hornet Boss 2"),
             ["lostkin"] = ("GG_Lost_Kin", "Lost Kin"),
-            ["palelurker"] = ("GG_Lurker", "Lurker Control/Pale Lurker"),
+            //["palelurker"] = ("GG_Lurker", "Lurker Control/Pale Lurker"),
             ["soulwarrior"] = ("GG_Mage_Knight", "Mage Knight"),
             ["mantislord"] = ("GG_Mantis_Lords", "Mantis Battle/Battle Main/Mantis Lord"),
             ["massivemosscharger"] = ("GG_Mega_Moss_Charger", "Mega Moss Charger"),
-            ["mato"] = ("GG_Nailmasters", "Brothers/Mato"),
-            ["oro"] = ("GG_Nailmasters", "Brothers/Oro"),
+            //["mato"] = ("GG_Nailmasters", "Brothers/Mato"),
+            //["oro"] = ("GG_Nailmasters", "Brothers/Oro"),
             ["nosk"] = ("GG_Nosk", "Mimic Spider"),
             ["wingednosk"] = ("GG_Nosk_Hornet", "Battle Scene/Hornet Nosk"),
             ["oblobble"] = ("GG_Oblobbles", "Mega Fat Bee"),
@@ -209,7 +209,7 @@ namespace CustomTrial
             "heavyfool",
             //"lancer",
             "lessermawlek",
-            "lobster",
+            //"lobster",
             "mantispetra",
             "mantistraitor",
             "primalaspid",
@@ -266,12 +266,13 @@ namespace CustomTrial
                 _globalSettings.SetGeoReward(100);
                 _globalSettings.AddWave(exampleWave1);
                 _globalSettings.AddWave(exampleWave2);
+                _globalSettings.EnableRandom = true;
             }
-            /*if(_globalSettings.EnableRandom)
+            if(_globalSettings.EnableRandom)
             {
-                _globalSettings = Utils.GenRandom.RandomPlay();
-            }*/
-            _globalSettings = Utils.GenRandom.AllPlay();
+                _globalSettings = Utils.GenRandom.AllPlay();
+            }
+            
 
             List<(string, string)> preloads = new();
             foreach (Wave wave in _globalSettings.Waves)
@@ -386,7 +387,8 @@ namespace CustomTrial
             }
             else if (nextScene.name == "Room_Colosseum_Gold")
             {
-                _globalSettings = Utils.GenRandom.RandomPlay();
+                if (_globalSettings.EnableRandom)
+                    _globalSettings = Utils.GenRandom.RandomPlay();
                 Crowds.Clear();
                 foreach (GameObject crowd in UObject.FindObjectsOfType<GameObject>()
                     .Where(go => go.name.Contains("Colosseum Crowd NPC")))

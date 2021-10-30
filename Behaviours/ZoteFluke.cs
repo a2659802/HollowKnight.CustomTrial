@@ -28,7 +28,7 @@ namespace CustomTrial.Behaviours
             deathState.RemoveTransition("FINISHED");
             deathState.AddMethod(() =>
             {
-                ColosseumManager.EnemyCount--;
+                //ColosseumManager.EnemyCount--;
                 Destroy(gameObject);
             });
 

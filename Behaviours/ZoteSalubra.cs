@@ -26,7 +26,7 @@ namespace CustomTrial.Behaviours
             _control.GetState("Death").RemoveTransition("FINISHED");
             _control.GetState("Death").InsertMethod(0, () =>
             {
-                ColosseumManager.EnemyCount--;
+                //ColosseumManager.EnemyCount--;
                 Destroy(gameObject);
             });
 

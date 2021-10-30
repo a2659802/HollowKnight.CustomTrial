@@ -10,11 +10,9 @@ namespace CustomTrial
     {
         private HealthManager _hm;
         private PlayMakerFSM _fsm;
-        private float timer;
 
         private void Awake()
         {
-            timer = 0;
             _hm = GetComponent<HealthManager>();
             _fsm = GetComponent<PlayMakerFSM>();
             _hm.OnDeath += () => Destroy(gameObject, 3);
@@ -26,6 +24,7 @@ namespace CustomTrial
             if (behaviour != null)
             {
                 gameObject.AddComponent(behaviour);
+                Modding.Logger.LogDebug($"Add Behaviour {behaviour.Name} to {goName}");
             }
             else if (goName.Contains("Plant Trap"))
             {
@@ -75,40 +74,117 @@ namespace CustomTrial
             try
             {
                 fix_behaviours();
+                WatchDog.Create(gameObject, () => ColosseumManager.EnemyCount--);
+                ColosseumManager.EnemyCount++;
             }
-            catch(NullReferenceException e)
+            catch
             {
-                ColosseumManager.EnemyCount--;
+                gameObject?.SetActive(false);
+                DestroyImmediate(gameObject);
+                return;
             }
+
         }
-    
-        private void Update()
+        private class WatchDog : MonoBehaviour
         {
-            var bottom = ArenaInfo.BottomY - 2f;
-            var top = ArenaInfo.TopY + 2f;
-            var left = ArenaInfo.LeftX - 2f;
-            var right = ArenaInfo.RightX + 2f;
+            GameObject go;
+            Action dead;
+            float tick = 0;
+            float arena_tick = 0;
+            const float max_inactive_time = 5f;
+            bool called = false;
+            HealthManager _hm;
 
-            //check out of arena
-            var pos = transform.position;
-            if(pos.x<left || pos.x>right || pos.y>top || pos.y<bottom)
+            const float bottom = ArenaInfo.DefaultBottomY - 2f;
+            const float top = ArenaInfo.DefaultTopY + 2f;
+            const float left = ArenaInfo.DefaultLeftX - 2f;
+            const float right = ArenaInfo.DefaultRightX + 2f;
+            public static GameObject Create(GameObject go,Action dead)
             {
-                timer += Time.deltaTime;
-                if(timer > 3 && !_hm.isDead)
+                if (go == null || dead == null)
                 {
-                    Modding.Logger.LogDebug("outside arena, try kill");
-                    transform.position = HeroController.instance.transform.position;
-                    _hm.Die(0, AttackTypes.Acid, true);
-                    Destroy(gameObject, 3);
+                    return null;
+                }
 
-                    timer = -10f;
+                var watcherGo = new GameObject($"{go.name}_watcher");
+                var watcher = watcherGo.AddComponent<WatchDog>();
+                watcher.go = go;
+                watcher.dead = dead;
+                watcher._hm = go.GetComponent<HealthManager>();
+                
+                return watcherGo;
+            }
+            void health_ckeck()
+            {
+                if (go.activeSelf == false || _hm.hp < 0)
+                {
+                    tick += Time.deltaTime;
+
+                    if (tick > max_inactive_time)
+                    {
+                        Modding.Logger.LogDebug($"{go?.name} unhealth, try kill");
+                        Call();
+                    }
+                }
+                else
+                {
+                    tick = 0;
                 }
             }
+            void arena_check()
+            {
+                var pos = go.transform.position;
+                if (pos.x < left || pos.x > right || pos.y > top || pos.y < bottom)
+                {
+                    arena_tick += Time.deltaTime;
+                    if (arena_tick > 5 && !_hm.isDead)
+                    {
+                        Modding.Logger.LogDebug($"{go?.name} outside arena, try kill");
+                        go.transform.position = HeroController.instance.transform.position;
+                        _hm.Die(0, AttackTypes.Acid, true);
+                        Destroy(go, 3);
+
+                        arena_tick = -10f;
+                    }
+                }
+                else
+                {
+                    arena_tick = 0;
+                }
+            }
+
+            void Call()
+            {
+                if (!called)
+                {
+                    tick = 0;
+                    dead?.Invoke();
+                    called = true;
+                    Destroy(go, 3);
+                }
+            }
+            void Update()
+            {
+                try
+                {
+                    health_ckeck();
+                    arena_check();
+                }
+                catch(NullReferenceException e)
+                {
+                    Call();
+                    Modding.Logger.LogWarn(e.StackTrace);
+                    Destroy(gameObject);
+                    Destroy(go);
+                }
+               
+            }
+
+            void OnDestroy()
+            {
+                Call();
+            }
         }
-    
-        private void OnDestroy()
-        {
-            ColosseumManager.EnemyCount--;
-        }
+
     }
 }

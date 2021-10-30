@@ -53,9 +53,9 @@ namespace CustomTrial.Behaviours
             _control.GetAction<SetFsmVector3>("Rage1 Tele").setValue = transform.position;
             _control.GetState("Climb Plats").InsertMethod(0, () =>
             {
-                ColosseumManager.EnemyCount--;
                 Destroy(gameObject);
             });
+            _control.GetState("Tendrils1").AddMethod(() => DestroyImmediate(gameObject));
 
             _commands.SetState("Init");
             _control.SetState("Init");

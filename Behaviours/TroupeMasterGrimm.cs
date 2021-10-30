@@ -43,7 +43,7 @@ namespace CustomTrial.Behaviours
             _control.GetState("Death Start").InsertMethod(0, () =>
             {
                 Destroy(FindObjectsOfType<GameObject>().First(go => go.name.Contains("Grimm Spike Holder")));
-                ColosseumManager.EnemyCount--;
+                //ColosseumManager.EnemyCount--;
             });
 
             _control.GetState("Bow").RemoveAction<ApplyMusicCue>();

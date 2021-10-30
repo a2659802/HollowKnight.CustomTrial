@@ -27,7 +27,7 @@ namespace CustomTrial.Behaviours
 
         private void Update()
         {
-            Modding.Logger.Log("[Mawlek] " + _control.ActiveStateName);
+            //Modding.Logger.Log("[Mawlek] " + _control.ActiveStateName);
         }
     }
 }

@@ -35,7 +35,7 @@ namespace CustomTrial.Behaviours
             _control.GetAction<FloatCompare>("Spawn").tolerance = 1;
 
             _death.ChangeTransition("Start Effect", "FINISHED", "Kill Enemies");
-            _death.GetState("Send Event").AddMethod(() => ColosseumManager.EnemyCount--);
+            //_death.GetState("Send Event").AddMethod(() => ColosseumManager.EnemyCount--);
 
             GetComponent<BoxCollider2D>().enabled = true;
             GetComponent<MeshRenderer>().enabled = true;
